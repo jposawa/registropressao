@@ -1,0 +1,41 @@
+*
+{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration:none;
+
+  --corPrincipal:#aaa;
+}
+
+input, button
+{
+  border:none;
+  padding:0.2rem;
+  background:#444;
+  color:#ddd;
+}
+
+.corpoPagina
+{
+  position:absolute;
+  display:flex;
+  flex-direction: column;
+  text-align:center;
+  width:100%;
+  height:100%;
+}
+
+.slotListaPressao, .slotFormPressao
+{
+  display:flex;
+  flex-direction: column;
+  text-align:center;
+  padding:0.2rem;
+}
+
+.slotListaPressao
+{
+  background:var(--corPrincipal);
+}

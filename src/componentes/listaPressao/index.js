@@ -36,7 +36,7 @@ export default class ListaPressao extends Component {
 
     if(strPrevData !== strData)
     {
-      this.atualizaRegistro();
+      // this.atualizaRegistro();
     }
   }
 
@@ -53,6 +53,8 @@ export default class ListaPressao extends Component {
       };
 
       this.setState({dataEscolhida:novaData});
+
+      this.atualizaRegistro();
     }
   }
 
@@ -77,12 +79,30 @@ export default class ListaPressao extends Component {
   render() {
     const {props, state} = this;
     const listaRegistros = Object.values(state.registroDiaEscolhido);
+    const date = new Date();
+    let mes = state.dataEscolhida.mes;
+    let dia = state.dataEscolhida.dia;
+
+    if(mes < 10)
+    {
+      mes = "0"+mes;
+    }
+
+    if(dia < 10)
+    {
+      dia = "0" + dia;
+    }
+
+    const dataAtual = state.dataEscolhida.ano + '-' + mes + '-' + dia;
+
+    console.log(dataAtual);
+    // const dataAtual = props.dataAtual.ano + '-' + props.dataAtual.mes + '-' + props.dataAtual.dia;
     
     // console.log(listaRegistros);
     return (
       <>
       <div className="slotMudaData">
-        <p><input type="date" className="input campoData" ref={(r) => {this.dataE = r}}/></p>
+        <p><input type="date" className="input campoData" ref={(r) => {this.dataE = r}} defaultValue={dataAtual}/></p>
         <p><button className="botao btnMudaData" onClick={this.atualizaDataEscolhida}>Pesquisar</button></p>
       </div>
       <ul className="lista listaPressao">
