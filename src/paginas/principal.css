@@ -147,6 +147,17 @@ p
   max-height:55%;
   height:auto;
   overflow:auto;
+  background:var(--corPrincipalMaisEscura);
+}
+
+.lista>li
+{
+  background:var(--corPrincipal);
+}
+
+.lista>li:nth-child(even)
+{
+  background:var(--corPrincipalClara);
 }
 
 .btnFechar
