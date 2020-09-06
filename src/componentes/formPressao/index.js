@@ -45,17 +45,17 @@ export default class FormPressao extends Component {
         </p>
 
         <p>
-          Valor maior:&nbsp;
+          Sistólica:&nbsp;
           <input type="tel" placeholder="Valor maior" ref={(r) => {this.valorMaior = r}} required/>
         </p>
 
         <p>
-          Valor menor:&nbsp;
+          Diastólica:&nbsp;
           <input type="tel" placeholder="Valor menor" ref={(r) => {this.valorMenor = r}} required/>
         </p>
 
         <p>
-          <button>Cadastrar</button>
+          <button className="btnConfirma">Cadastrar</button>
         </p>
       </form>
     );

@@ -5,16 +5,52 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration:none;
+  transition: all 0.3s;
   /* line-height:1.1rem; */
 
-  --corPrincipal:#47a;
+  --corPrincipal:rgb(68, 119, 170);
+  --corPrincipalClara:rgb(78, 140, 201);
+  --corPrincipalEscura:rgb(47, 83, 119);
+  --corPrincipalMaisEscura:rgb(40,73,110);
+  --corAnaloga1:rgb(68,170,119);
+  --corAnaloga1MaisClara:rgb(4, 248, 126);
+  --corComplementar:rgb(194, 160, 9);
 }
 
 input, button
 {
-  border:none;
+  /* border:none; */
   padding:0.2rem;
-  background:#555;
+  /* background:var(--corPrincipalEscura); */
+  /* color:#ddd; */
+  --corUsada:var(--corPrincipalEscura);
+
+  border:1px solid var(--corUsada);
+  background:inherit;
+  color:var(--corUsada);
+  font-size:105%;
+  outline:none;
+  /* cursor:pointer; */
+  /* border-radius:5px; */
+  /* box-shadow:1px 1px 0.2rem 0 #333; */
+}
+
+button
+{
+  border-radius:5px;
+  cursor:pointer;
+}
+
+input:focus, button:hover, button:focus
+{
+  color:#eee;
+  box-shadow:0 0 5rem 5rem var(--corUsada) inset;
+  /* font-size:110%; */
+  /* border-style:hidden; */
+}
+
+input:focus::placeholder
+{
   color:#ddd;
 }
 
@@ -31,6 +67,7 @@ p
   text-align:center;
   width:100%;
   height:100%;
+  overflow: auto;
 }
 
 .slotListaPressao, .slotFormPressao
@@ -44,4 +81,77 @@ p
 .slotListaPressao
 {
   background:var(--corPrincipal);
+}
+
+.btnAdd
+{
+  --tamanho: 2rem;
+  --corUsada:var(--corAnaloga1);
+
+  width:var(--tamanho);
+  height:var(--tamanho);
+  font-size:16pt;
+  border-radius:50%;
+  background:var(--corUsada);
+  color:#ddd;
+  padding:0;
+}
+
+.btnPreenchido
+{
+  --corUsada: var(--corPrincipalMaisEscura);
+
+  background:var(--corUsada);
+  color:#ddd;
+  border:none;
+}
+
+.btnPreenchido:hover, .btnPreenchido:focus
+{
+  --corUsada:var(--corPrincipalEscura);
+  color:#fff;
+  /* box-shadow:0 0 2rem rgba(200,200,200,0.5) inset; */
+  box-shadow:none;
+}
+
+.btnConfirma
+{
+  --corUsada: var(--corAnaloga1);
+}
+
+.listaPressao
+{
+  color:#eee;
+}
+
+.campoData
+{
+  --corUsada:var(--corAnaloga1MaisClara);
+}
+
+.slotFormPressao
+{
+  height:100%;
+  max-height:40%;
+  overflow:hidden;
+}
+
+.slotRecolhido
+{
+  padding:0;
+  max-height:0;
+}
+
+.slotListaPressao
+{
+  max-height:55%;
+  height:100%;
+  overflow:auto;
+}
+
+.btnFechar
+{
+  transform:rotateZ(45deg);
+  padding:0.12rem 0.12rem 0 0;
+  --corUsada:var(--corComplementar);
 }
