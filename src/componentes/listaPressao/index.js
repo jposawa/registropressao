@@ -113,8 +113,16 @@ export default class ListaPressao extends Component {
     }
   }
 
+  mostraForm = (evento) =>{
+    const {props} = this;
+    const {mostraFormPressao} = props;
+
+    props.alternaFormPressao(!mostraFormPressao);
+  }
+
   render() {
     const {props, state} = this;
+    const {mostraFormPressao} = props;
     const listaRegistros = Object.values(state.registroDiaEscolhido);
     const date = new Date();
     let mes = state.dataEscolhida.mes;
@@ -140,7 +148,8 @@ export default class ListaPressao extends Component {
       <>
       <div className="slotMudaData">
         <p><input type="date" className="input campoData" ref={(r) => {this.dataE = r}} defaultValue={dataAtual}/></p>
-        <p><button className="botao btnMudaData" onClick={this.atualizaDataEscolhida}>Pesquisar</button></p>
+        <p><button className="botao btnMudaData btnPreenchido" onClick={this.atualizaDataEscolhida}>Pesquisar</button></p>
+        <button className={!mostraFormPressao ? "btnAdd" : "btnAdd btnFechar"} onClick={this.mostraForm}>+</button>
       </div>
       <ul className="lista listaPressao">
       {

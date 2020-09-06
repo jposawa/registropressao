@@ -35,6 +35,7 @@ export default class Inicio extends Component {
         minuto:undefined,
       },
       atualizaLista:false,
+      mostraFormPressao:false,
     };
 
     try{
@@ -74,7 +75,7 @@ export default class Inicio extends Component {
   }
 
   atualizaStateDataAtual = (novaData) =>{
-    if(novaData !== null && novaData != undefined)
+    if(novaData !== null && novaData !== undefined)
     {
       this.setState({dataAtual:{...novaData}});
     }
@@ -96,7 +97,7 @@ export default class Inicio extends Component {
 
   atualizaDadosPressao = (novaPressao) =>{
     const {state} = this;
-    const dadosPressao = {...state.dadosPressao};
+    // const dadosPressao = {...state.dadosPressao};
     const dataAtual = this.pegaDataAtual();
     let caminho = "";
     let updates = {};
@@ -128,21 +129,37 @@ export default class Inicio extends Component {
     this.setState({atualizaLista:atualizaLista});
   }
 
+  alternaFormPressao = (valor) =>{
+    let _mostraForm = false;
+
+    if(valor)
+    {
+      _mostraForm = valor;
+    }
+
+    this.setState({mostraFormPressao:_mostraForm});
+  }
+
   render() {
+    const {state} = this;
+
     return (
       <div className="corpoPagina">
         <div className="slotListaPressao">
           <ListaPressao
             dadosPressao = {this.state.dadosPressao}
             atualizaLista = {this.state.atualizaLista}
+            mostraFormPressao = {this.state.mostraFormPressao}
             pegaDataAtual = {this.pegaDataAtual}
             alternaAtualiza = {this.alternaAtualiza}
+            alternaFormPressao = {this.alternaFormPressao}
           />
         </div>
 
-        <div className="slotFormPressao">
+        <div className={state.mostraFormPressao ? "slotFormPressao" : "slotFormPressao slotRecolhido"}>
           <FormPressao
             dataAtual = {this.state.dataAtual}
+            mostraFormPressao = {this.state.mostraFormPressao}
             atualizaDadosPressao = {this.atualizaDadosPressao}
             pegaDataAtual = {this.pegaDataAtual}
           />
