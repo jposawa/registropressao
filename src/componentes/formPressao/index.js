@@ -21,6 +21,9 @@ export default class FormPressao extends Component {
       valorMenor: this.valorMenor.value,
     }
 
+    const [form] = document.getElementsByClassName("formPressao");
+
+    form.reset();
     this.props.atualizaDadosPressao({...novoCadastro});
   }
 
@@ -33,22 +36,22 @@ export default class FormPressao extends Component {
       <form className="form formPressao" onSubmit = {this.validaFormPressao}>
         <p>
           Autor registro:&nbsp;
-          <input type="text" placeholder="Nome autor" ref={(r) => {this.autor = r}}/>
+          <input type="text" placeholder="Nome autor" ref={(r) => {this.autor = r}} required/>
         </p>
 
         <p>
           Horário:&nbsp;
-          <input type="time" placeholder="Horário medição" ref={(r) => {this.horario = r}} defaultValue={horarioAtual}/>
+          <input type="time" placeholder="Horário medição" ref={(r) => {this.horario = r}} defaultValue={horarioAtual} required/>
         </p>
 
         <p>
           Valor maior:&nbsp;
-          <input type="tel" placeholder="Valor maior" ref={(r) => {this.valorMaior = r}}/>
+          <input type="tel" placeholder="Valor maior" ref={(r) => {this.valorMaior = r}} required/>
         </p>
 
         <p>
           Valor menor:&nbsp;
-          <input type="tel" placeholder="Valor menor" ref={(r) => {this.valorMenor = r}}/>
+          <input type="tel" placeholder="Valor menor" ref={(r) => {this.valorMenor = r}} required/>
         </p>
 
         <p>

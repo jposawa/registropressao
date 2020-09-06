@@ -33,10 +33,12 @@ export default class ListaPressao extends Component {
 
     const strPrevData = Object.values(prevDataEscolhida).join('-');
     const strData = Object.values(dataEscolhida).join('-');
+    // console.log(props.atualizaLista);
+    // console.log(prevProps.atualizaLista);
 
-    if(strPrevData !== strData)
+    if(props.atualizaLista !== prevProps.atualizaLista && props.atualizaLista)
     {
-      // this.atualizaRegistro();
+      this.atualizaRegistro();
     }
   }
 
@@ -63,14 +65,15 @@ export default class ListaPressao extends Component {
     const {dadosPressao} = props;
     const {dataEscolhida} = state;
     let registroAtual = {};
-    console.log(dadosPressao);
+    // console.log(dadosPressao);
 
     try{
-      console.log(dadosPressao);
-      console.log(dadosPressao[dataEscolhida.ano]);
+      // console.log(dadosPressao);
+      // console.log(dadosPressao[dataEscolhida.ano]);
       registroAtual = dadosPressao[dataEscolhida.ano][dataEscolhida.mes][dataEscolhida.dia];
 
       this.setState({registroDiaEscolhido:{...registroAtual}});
+      props.alternaAtualiza();
     }
     catch(erro){
       console.log(erro);

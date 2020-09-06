@@ -34,6 +34,7 @@ export default class Inicio extends Component {
         hora:undefined,
         minuto:undefined,
       },
+      atualizaLista:false,
     };
 
     try{
@@ -103,15 +104,28 @@ export default class Inicio extends Component {
     caminho += tabelaFb.pressao + dataAtual.ano + "/" + dataAtual.mes + "/" + dataAtual.dia + "/" + dataAtual.horarioCompleto;
 
     updates[caminho] = novaPressao;
+    this.alternaAtualiza(true);
 
     try{
       this.db.ref().update(updates).then(() => {
         console.log("Salvou com sucesso");
+        alert("Registrado com sucesso");
       })
     }
     catch(err){
       console.log(err);
     }
+  }
+
+  alternaAtualiza = (novoValor) =>{
+    let atualizaLista = false;
+
+    if(novoValor)
+    {
+      atualizaLista = true;
+    }
+
+    this.setState({atualizaLista:atualizaLista});
   }
 
   render() {
@@ -120,7 +134,9 @@ export default class Inicio extends Component {
         <div className="slotListaPressao">
           <ListaPressao
             dadosPressao = {this.state.dadosPressao}
+            atualizaLista = {this.state.atualizaLista}
             pegaDataAtual = {this.pegaDataAtual}
+            alternaAtualiza = {this.alternaAtualiza}
           />
         </div>
 
