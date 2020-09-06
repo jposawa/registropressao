@@ -24,6 +24,7 @@ export default class ListaPressao extends Component {
     };
 
     this.setState({dataEscolhida:novaData});
+    // this.atualizaCampoData();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -39,6 +40,11 @@ export default class ListaPressao extends Component {
     if(props.atualizaLista !== prevProps.atualizaLista && props.atualizaLista)
     {
       this.atualizaRegistro();
+    }
+
+    if(prevState.dataEscolhida != state.dataEscolhida)
+    {
+      this.atualizaCampoData();
     }
   }
 
@@ -60,6 +66,33 @@ export default class ListaPressao extends Component {
     }
   }
 
+  atualizaCampoData = () =>{
+    const [campoData] = document.getElementsByClassName("campoData");
+    const dataEscolhida = {...this.state.dataEscolhida};
+    let txtData = "";
+
+    if(dataEscolhida.dia < 10)
+    {
+      dataEscolhida.dia = "0"+dataEscolhida.dia;
+    }
+
+    if(dataEscolhida.mes < 10)
+    {
+      dataEscolhida.mes = "0" + dataEscolhida.mes;
+    }
+
+    txtData += dataEscolhida.ano + '-' + dataEscolhida.mes + "-" + dataEscolhida.dia;
+
+    console.log(txtData);
+    console.log(campoData.value);
+
+    if(campoData.value !== txtData)
+    {
+      campoData.value = txtData;
+    }
+    // console.log(dataEscolhida);
+  }
+
   atualizaRegistro = () =>{
     const {props, state} = this;
     const {dadosPressao} = props;
@@ -79,6 +112,7 @@ export default class ListaPressao extends Component {
       console.log(erro);
     }
   }
+
   render() {
     const {props, state} = this;
     const listaRegistros = Object.values(state.registroDiaEscolhido);
@@ -98,7 +132,7 @@ export default class ListaPressao extends Component {
 
     const dataAtual = state.dataEscolhida.ano + '-' + mes + '-' + dia;
 
-    console.log(dataAtual);
+    // console.log(dataAtual);
     // const dataAtual = props.dataAtual.ano + '-' + props.dataAtual.mes + '-' + props.dataAtual.dia;
     
     // console.log(listaRegistros);
