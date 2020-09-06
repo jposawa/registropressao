@@ -99,7 +99,7 @@ p
 
 .btnPreenchido
 {
-  --corUsada: var(--corPrincipalMaisEscura);
+  --corUsada: var(--corPrincipal);
 
   background:var(--corUsada);
   color:#ddd;
@@ -108,7 +108,7 @@ p
 
 .btnPreenchido:hover, .btnPreenchido:focus
 {
-  --corUsada:var(--corPrincipalEscura);
+  --corUsada:var(--corPrincipalClara);
   color:#fff;
   /* box-shadow:0 0 2rem rgba(200,200,200,0.5) inset; */
   box-shadow:none;
