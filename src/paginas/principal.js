@@ -1,24 +1,24 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Inicio from './inicio';
 
 import './principal.css';
 
-export default class Principal extends Component{
-    constructor(props){
-        super(props);
+export default class Principal extends Component {
+  constructor(props) {
+    super(props);
 
-        this.state = {};
-    }
+    this.state = {};
+  }
 
-    componentDidMount(){}
+  componentDidMount() { }
 
-    componentDidUpdate(prevProps, prevState){}
+  componentDidUpdate(prevProps, prevState) { }
 
-    render(){
-        return(
-            <>
-            <Inicio/>
-            </>
-        );
-    }
+  render() {
+    return (
+      <div className="corpoSite">
+        <Inicio />
+      </div>
+    );
+  }
 }
